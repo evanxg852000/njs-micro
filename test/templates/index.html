@@ -1,0 +1,17 @@
+{% extends main.html %}
+
+{% block content %}
+
+    {% if (test)  %}
+        truthy eval
+    {% else %}
+        falsy eval
+    {% endif %}
+
+    <ul>
+    {% for (let it  of items) %}
+        <li>#{{ 'idx+1' }} : {{ it }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

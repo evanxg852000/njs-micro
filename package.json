@@ -1,0 +1,20 @@
+{
+  "name": "njs-micro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "debug": "mocha --inspect-brk",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.4"
+  }
+}
