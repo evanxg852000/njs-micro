@@ -107,9 +107,9 @@ class Router {
                 continue
             if(part.startsWith(':')){
                 if(part.endsWith('?')){
-                    regex += '(/(\\w+))?' 
+                    regex += '(/([_a-zA-Z0-9\\-]+))?' 
                 } else {
-                    regex += '/(\\w+)'
+                    regex += '/([_a-zA-Z0-9\\-]+)'
                 }
                 params.push(part.replace(/(\?|:)/g, ''))
                 continue
