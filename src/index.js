@@ -2,7 +2,7 @@ const Micro = require('./micro')
 
 const app = new Micro({
     env: 'prod',
-    templates: './src/templates',
+    templates: './templates',
     port: 3535
 })
 

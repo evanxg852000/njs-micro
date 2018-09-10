@@ -2,9 +2,6 @@ const fs = require('fs')
 const path = require('path')
 var crypto = require('crypto');
 
-// http://alexmic.net/building-a-template-engine/
-// https://github.com/alexmic/microtemplates/blob/master/microtemplates/base.py
-
 class Templater {
 
     constructor(dir, cached){

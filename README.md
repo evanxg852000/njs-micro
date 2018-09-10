@@ -8,7 +8,7 @@ A NodeJS micro framework for learning and fun.
 Introduction
 ------------
 
-This lightweight web framework will teach you how popular node js frameworks like [express] are
+This lightweight web framework will teach you how popular node js frameworks like [express](http://expressjs.com/) are
 built. This is not intended for use in an application, this only exist for the purpose of learning how the internals of web frameworks work.
 
 > Please don't use this knowledge to create yet another NodeJS framework, we already have too many of them.
@@ -21,7 +21,7 @@ const Micro = require('./micro')
 
 const app = new Micro({
     env: 'prod',
-    templates: './src/templates',
+    templates: './templates',
     port: 3535
 })
 
