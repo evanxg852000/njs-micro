@@ -1,3 +1,5 @@
+templates/.tmp/
+
 # Logs
 logs
 *.log
