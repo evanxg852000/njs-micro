@@ -331,8 +331,4 @@ class ForNode extends Node{
 }
 
 
-
-
-
-
 module.exports = Templater

@@ -4,12 +4,6 @@ class Router {
     constructor(){
         this._routes = []
         this._prefix = '' 
-        // var aroute = {
-        //     methods: ['GET', 'POST', 'PUT', 'DELETE'],   
-        //     patern: /{}/,
-        //     params: ['id', 'class'],
-        //     handlers: [fn1, fn2]
-        // }
     }
 
     route(specs, methods, handlers){
@@ -70,17 +64,17 @@ class Router {
             }, {})
 
             // Create handler chain and start processing request
-            const nextStack =[]
+            let nextHandler
             const handlerStack = route.handlers.slice().reverse()
             const params = Object.values(request.params)
             for(const handler of handlerStack){
-                const lastNext = nextStack.pop()
+                let lastNext = nextHandler
                 const next = () => {
                     handler(request, response, lastNext, ...params)
                 }
-                nextStack.push(next)
+                nextHandler = next
             }
-            nextStack.pop()()
+            nextHandler()
             handledRequest = true 
             break;
         }
@@ -93,11 +87,9 @@ class Router {
     }
 
     _patternToRegex(pattern){
-        /*
-		 * /test/ -> ^/test/$
-		 * /student/:id -> ^/student/(\\w+)$
-		 * /project/:name/:sprint? -> ^/project/(\\w+)/(/(\\w+)?)$
-         * 
+        /* example of transformation 
+		 * /student/:id -> ^/student/([_a-zA-Z0-9\-]+)$
+		 * /project/:name/:sprint? -> ^/project/([_a-zA-Z0-9\-]+)(\/([_a-zA-Z0-9\-]+))?$
 		 */	
         let regex = ''
         let params = []
@@ -116,7 +108,7 @@ class Router {
             }
             regex += `/${part}`
         }
-        // Handle special case (web root)
+        // Handle special case (e.i web root)
         if(regex === ''){
            regex = '/'  
         }

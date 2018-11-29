@@ -70,11 +70,13 @@ app.route((router) => {
 
     // exemple of  midleware handler chaining
     router.get('/chain/exemple', [ 
-            (req, res) => {
+            (req, res, next) => {
                 req.chain = 'one ->'
+                next()
             }, 
-            (req, res) => {
+            (req, res, next) => {
                 req.chain = `${ req.chain} two ->`
+                next()
             }, 
             (req, res) => {
                 res.end(`${req.chain} three`)
