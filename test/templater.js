@@ -49,7 +49,7 @@ describe('Templater', () => {
         assert.equal(genCode.includes('__njsOutput +=  title'), true)
         assert.equal(genCode.includes('if (test) {'), true)
         assert.equal(genCode.includes('} else {  __njsOutput += `'), true)
-        assert.equal(genCode.includes('for (let it  of items) { '), true)
+        assert.equal(genCode.includes('for (let it of items) { '), true)
         assert.equal(genCode.includes(`__njsOutput +=  'idx+1'`), true)
         
 

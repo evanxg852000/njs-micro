@@ -31,7 +31,7 @@ __njsOutput += `</title>
     <ul>
     ` 
  
- for (let it  of items) { 
+ for (let it of items) { 
  __njsOutput += `
         <li>#` 
  
