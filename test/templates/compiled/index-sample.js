@@ -1,7 +1,7 @@
 module.exports = function (context) {
     //extract context as local variables
     for(let varname of Object.keys(context)){
-		this[varname]= context[varname]
+		  this[varname]= context[varname]
     }
     
     let __njsOutput = ''

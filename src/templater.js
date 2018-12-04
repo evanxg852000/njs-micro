@@ -25,7 +25,7 @@ class Templater {
         }
 
         let render = null
-        //compare file dates if it was previously compiled
+        //checks if compiled file exist
         if(this._cached && fs.existsSync(compiledFile)){
             render = require(compiledFile)
             return render(context)
@@ -40,6 +40,17 @@ class Templater {
     compile(file){
         let ast = this.parse(this._tokenize(this._readTmplSource(file)))
         return ast  
+    }    
+    
+    parse(tokens){
+        this._parser = {
+            templater: this,
+            tokens: tokens,
+            pos: 0
+        }
+        let rootAst = new TemplateNode(this._parser, tokens[0])
+        this._parse(rootAst)
+        return rootAst
     }
 
     generate(ast){
@@ -85,16 +96,6 @@ class Templater {
         })
     }
 
-    parse(tokens){
-        this._parser = {
-            templater: this,
-            tokens: tokens,
-            pos: 0
-        }
-        let rootAst = new TemplateNode(this._parser, tokens[0])
-        this._parse(rootAst)
-        return rootAst
-    }
 
     _parse(ast, stops){
         while(this._parser.pos < this._parser.tokens.length){
