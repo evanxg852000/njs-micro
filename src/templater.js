@@ -103,7 +103,6 @@ class Templater {
             let expr = token.replace(/[%{}]/g, '').trim().split(/\s(.+)/)
             
             if(stops && Array.isArray(expr) && stops.includes(expr[0])) {
-                
                 this._parser.pos += 1
                 return expr[0] //stop parsing nested block
             }
@@ -149,17 +148,6 @@ class Templater {
             //text
             let textNode = new TextNode(this._parser, [token])
             textNode.parse(ast)
-        }
-    }
-
-    isAnyOf(files){
-        return {
-            newerThan: (than) => {
-                tempChangedOn = ((files.map((file) => {
-                    return fs.statSync(file).mtime
-                })).sort().reverse())[0]
-                return tempChangedOn > s.statSync(than).mtime
-            }
         }
     }
 
